@@ -70,7 +70,7 @@ const Tournament = () => {
             <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent h-100'></div>
             <div className='mt-20 lg:px-20'>
                 <div>
-                    <h1 className='absolute lg:top-40 top-50 lg:left-150 z-10 text-white left-15 text-center my-5 py-5 text-3xl lg:text-5xl font-semibold '>Tournaments</h1>
+                    <h1 className='absolute lg:top-40 top-50 lg:left-150 z-10 text-white  text-center item-center left-1/4 justify-center my-5 py-5 text-3xl lg:text-5xl font-semibold '>Tournaments</h1>
                     <div className='flex justify-center mb-10 mt-[-50px]   items-center w-full lg:gap-12'>
                         <div className='  border-gray-500 px-5 flex shadow shadow-black w-70 lg:w-110 items-center rounded-full text-center '>
                             <FaSearch className='scale-130 hidden lg:flex md:flex opacity-40 ' />

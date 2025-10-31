@@ -18,7 +18,7 @@ const Navbar = () => {
           <Link to={'/'}>
             <img src={logo} alt="logo" className='lg:h-13 h-10' />
           </Link>
-          <img onClick={()=> setMenuOpen(!menuOpen)} src={ !menuOpen ? "https://cdn-icons-png.flaticon.com/128/2976/2976215.png": "https://cdn-icons-png.flaticon.com/128/4347/4347434.png"} className='h-8 lg:hidden md:hidden' alt="menu" />
+          <img onClick={()=> setMenuOpen(!menuOpen)} src={ !menuOpen ? "https://cdn-icons-png.flaticon.com/128/2976/2976215.png": "https://cdn-icons-png.flaticon.com/128/4347/4347434.png"} className='h-8 lg:hidden md:hidden absolute right-5' alt="menu" />
           
         </div>
 

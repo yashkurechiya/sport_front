@@ -81,9 +81,9 @@ const Academy = () => {
             <div className='mt-20 lg:px-20 px-5 '>
 
                 <div>
-                    <h1 className='absolute top-40 lg:left-160  z-10 text-white text-center my-5 py-5 text-3xl left-20 md:left-50 lg:text-5xl font-semibold '>Academy</h1>
+                    <h1 className='absolute top-50 lg:left-160  z-10 text-white text-center my-5 py-5 text-3xl left-1/3 md:left-50 lg:text-5xl font-semibold '>Academy</h1>
                     <div className='flex justify-center mb-10 mt-[-50px]  items-center w-full gap-12'>
-                        <div className='  border-gray-500 w-120 px-5 flex shadow shadow-black items-center rounded-full text-center '>
+                        <div className='  border-gray-500 w-100 px-5 mx-5 lg:mx-0 flex shadow shadow-black items-center rounded-full text-center '>
                             <FaSearch className='scale-130 opacity-40 ' />
                             <input type="text" placeholder='Search....' className='p-3 border-none outline-none rounded-full' />
                             {/* <select value={level}   className='px-4 outline-none border-none  rounded-full py-2 ml-2'>

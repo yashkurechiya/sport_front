@@ -42,7 +42,7 @@ const [sportd, setSportd] = useState([]);
 
         </div>
         ) : 
-        <div className='my-10 justify-center text-center mx-50 px-40 ' >
+        <div className='my-10 justify-center items-center text-center w-full ' >
 
             <Loader />
         </div>
