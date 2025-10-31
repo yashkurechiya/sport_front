@@ -10,9 +10,12 @@ import Loader from "./Loader.jsx";
 
     const [sportD, setSportD] = useState([]);
 
+       const backend = import.meta.env.VITE_BACKEND_URL ?? '';
+    const base = backend.replace(/\/$/, ''); // remove trailing slash if present
+
     const handleData = async () =>{
         try {
-            const response = await axios.get('http://localhost:5000/api/sportget', {});
+            const response = await axios.get(`${base}/api/sportget`, {});
             setSportD(response.data);
         } catch (error) {
             console.log(error);

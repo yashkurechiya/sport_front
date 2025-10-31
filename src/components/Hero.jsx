@@ -87,7 +87,7 @@ const Hero = () => {
                         <img
                             src="https://cdn-icons-png.flaticon.com/128/1021/1021220.png"
                             alt="Gold Medal Icon"
-                            className="absolute z-20 h-16 sm:h-24 md:h-28 lg:h-40 right-4 sm:right-8 md:right-10 bottom-75 sm:bottom-6 md:bottom-8"
+                            className="absolute z-20 h-16 sm:h-24 md:h-28 lg:h-40 right-4 sm:right-8 md:right-10 top-10 lg:top-100  sm:bottom-6 md:bottom-8"
                         />
                     </div>
                 </SwiperSlide>

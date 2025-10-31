@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GameFooter from "./Footer";
 import { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { data, useParams } from "react-router-dom";
+import Loader from "./Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,18 +56,15 @@ const TennisTimeline = () => {
   const containerRef = useRef([]);
   const { id } = useParams();
   const [sportD, setSportD] = useState([]);
+     const backend = import.meta.env.VITE_BACKEND_URL ?? '';
+    const base = backend.replace(/\/$/, ''); // remove trailing slash if present
 
   const handleData = async () => {
     try {
       console.log(id);
-      const response = await axios.get("http://localhost:5000/api/sportget", {});
+      const response = await axios.get(`${base}/api/sportget`, {});
       const data = response.data.find((sport) => sport.id === id);
-      console.log(data);
       setSportD(data?.gsaptime || []);
-
-
-      console.log(response.data);
-
     } catch (error) {
       console.log(error);
     }
@@ -135,7 +133,8 @@ const TennisTimeline = () => {
       <h2 className="lg:text-3xl text-xl font-bold text-center mb-12 text-black">
         Indian Champions
       </h2>
-
+    {
+      data.length > 0 ? 
       <div className="flex flex-col  gap-16 max-w-6xl mx-auto px-6">
         {sportD.map((item, index) => (
           <div
@@ -162,6 +161,11 @@ const TennisTimeline = () => {
           </div>
         ))}
       </div>
+      : 
+      <div>
+        <Loader />
+      </div>
+    } 
       <GameFooter />
     </div>
 
