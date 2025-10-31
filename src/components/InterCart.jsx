@@ -16,7 +16,7 @@ const InterCart = () => {
             </div>
             <div className="relative cursor-pointer lg:my-0 lg:h-50 h-30  lg:w-80 w-50 overflow-hidden rounded-lg group">
                 <img
-                    src="https://media.licdn.com/dms/image/v2/D4E12AQEOsl54LrokLw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1704897997470?e=1761782400&v=beta&t=3dSqYA1eAMaXN8wB4LjoJIWcwfMLot5SvWMVGj2R8U4"
+                    src="https://cdn.mos.cms.futurecdn.net/epJpgLY2h2TnuT8WoS5ZZN-1280-80.jpg.webp"
                     className="absolute group-hover:scale-110 transition-transform duration-300 inset-0 h-full w-full object-cover"
                     alt="Olympics"
                 />

@@ -7,23 +7,24 @@ import SportCard from '../components/SportCard'
 import Loader from '../components/Loader'
 
 const Played = () => {
+const [sportd, setSportd] = useState([]);
+    const backend = import.meta.env.VITE_BACKEND_URL ?? '';
+    const base = backend.replace(/\/$/, ''); // remove trailing slash if present
 
-    const [sportd, setSportd] = useState([]);
+    useEffect(() => {
+        const fetchSport = async () => {
+            try {
+                const response = await axios.get(`${base}/sport/getsport`);
+                setSportd(response?.data?.sport ?? []); // safe fallback
+            } catch (error) {
+                console.error('Failed to load sport:', error);
+            }
+        };
 
-    const handleData =async () =>{
-        try {
-            const response = await axios("http://localhost:5000/sport/getsport" ,{})
-            setSportd(response.data.sport);
-        } catch (error) {
-            console.log(error.message);
-            
-        }
-    }
+        if (base) fetchSport(); // only call when backend is set
+    }, [base]);
 
-    useEffect(()=>{
-        handleData()
-        
-    },[])
+    
     
     return (
         sportd && sportd.length > 0 ? (

@@ -72,7 +72,7 @@ const GetDetail = () => {
 
     ))}
   </div>
-  <a href="http://localhost:5173/sport">
+  <a href="https://sport-back-j4fj.onrender.com/sport">
   <button className='lg:p-3 p-2 text-center cursor-pointer justify-center bg-red-600 hover:bg-red-700 font-semibold rounded-lg text-white'>Know More</button></a>
 </div>
 
