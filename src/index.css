@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Prata&display=swap');
+@import "tailwindcss";
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-stand {
+  font-family: 'Bebas Neue';
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.animate {
+  background: linear-gradient(270deg, #fe7c36, #eb8d35, #ffffff, #009c39, #00910e);
+  background-size: 1000% 1000%;
+  animation: gradient 4s ease infinite;
+}
+
+/* If you want both animations on the same element, use: */
+.animate.animate-scroll {
+  animation: gradient 9s ease infinite, scroll 12s linear infinite;
+}
+
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.back{
+  background-image: url('/src/assets/gemini.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+/* This container pins to the top of the screen */
+.scroll-trigger {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* This container is much wider than the viewport and moves horizontally */
+.scroll-section {
+  display: flex;
+  flex-direction: row;
+  width: 500vw; /* 100vw for each panel */
+  height: 100vh;
+}
+
+.scroll-panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.color-1 h1 {
+  font-size: 4rem;
+  color: white;
+  font-weight: bold;
+}
+
+.color-1{
+  color: white;
+}
+/* Panel background colors for visual distinction */
+ 
