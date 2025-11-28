@@ -34,7 +34,7 @@ export default function Login() {
         navigate("/");
       }
     } catch (err) {
-      alert(err.response?.data?.msg || "Login failed");
+      alert(err.response?.data?.msg || "Login react");
     }
   };
 

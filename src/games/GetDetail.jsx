@@ -1,6 +1,7 @@
 import React from 'react'
 
 const GetDetail = () => {
+  const backend = import.meta.env.VITE_BACKEND_URL;
     const data =[
         {
             id:1,
@@ -64,7 +65,7 @@ const GetDetail = () => {
         <img
           src={item.logo}
           alt={item.name}
-          className='lg:w-20 lg:h-20 h-10 object-contain mb-5 group-hover:scale-110 transition-transform duration-200 '
+          className='lg:w-20 lg:h-20 h-15 object-contain mb-5 group-hover:scale-110 transition-transform duration-200 '
         />
         <h2 className='lg:text-lg font-semibold text-center '>{item.name}</h2>
       </div>
@@ -72,7 +73,7 @@ const GetDetail = () => {
 
     ))}
   </div>
-  <a href="https://sport-back-j4fj.onrender.com/sport">
+  <a href={`${backend}/sport`}>
   <button className='lg:p-3 p-2 text-center cursor-pointer justify-center bg-red-600 hover:bg-red-700 font-semibold rounded-lg text-white'>Know More</button></a>
 </div>
 
