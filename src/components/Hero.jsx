@@ -6,16 +6,52 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 const Hero = () => {
     return (
-        <div className=''>
+        <div className="relative">
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={20}
                 slidesPerView={1}
-                pagination={{ clickable: true }}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 loop={true}
                 className="shadow-lg"
+                navigation={false}
+                pagination={{
+                    // render into our custom container so we can style/position it with Tailwind
+                    el: '.custom-pagination',
+                    clickable: true,
+                    renderBullet: (index, className) =>
+                        `<span class="${className} bg-white active lg:w-2 lg:h-2 w-1 h-1 rounded-full inline-block mx-1"></span>`
+                }}
             >
+                <>
+                    <style>{`
+                        /* base bullet style (matches your tailwind w-2 h-2 rounded-full) */
+                        .custom-pagination .swiper-pagination-bullet {
+                            width: 0.5rem;
+                            height: 0.5rem;
+                            background: #ffffff;
+                            border-radius: 9999px;
+                            margin: 0 0.25rem;
+                            opacity: 0.7;
+                            transform: scale(1);
+                            transform-origin: center;
+                            transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease;
+                            display: inline-block;
+                        }
+
+                        /* active bullet: scale up + subtle glow */
+                        .custom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+                            transform: scale(1.6);
+                            opacity: 1;
+                            box-shadow: 0 0 0 6px rgba(255,255,255,0.06);
+                        }
+
+                        /* optional: smooth entering/leaving when slides change */
+                        .custom-pagination .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+                            transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease;
+                        }
+                    `}</style>
+                </>
                 {/* 5 Slides */}
                 <SwiperSlide>
                     <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[85vh] lg:h-[80vh] overflow-hidden">
@@ -74,7 +110,7 @@ const Hero = () => {
                         {/* Text Overlay */}
                         <div className="absolute bottom-15 sm:bottom-16 md:bottom-24 lg:bottom-28 left-4 sm:left-8 md:left-12 text-white max-w-5xl">
                             <h1 className="font-stand  text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 leading-tight drop-shadow-lg">
-                                Neeraj Chopra Throws India into <br className="hidden sm:block" /> Olympic History
+                                Neeraj Chopra Throws India into Olympic History
                             </h1>
                             <h2 className="font-xs text-sm sm:text-base md:text-lg lg:text-2xl leading-snug px-1 sm:px-0">
                                 From the Asian Youth Games to Olympic glory, <br className="hidden md:block" />
@@ -91,28 +127,10 @@ const Hero = () => {
                         />
                     </div>
                 </SwiperSlide>
-
-                {/* <SwiperSlide>
-                    <div className="h-120 flex items-center justify-center bg-green-500 text-white text-2xl font-bold rounded-lg">
-                        Slide 2 – Upcoming Events
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="h-120 flex items-center justify-center bg-red-500 text-white text-2xl font-bold rounded-lg">
-                        Slide 3 – Academy Highlights
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="h-120 flex items-center justify-center bg-purple-500 text-white text-2xl font-bold rounded-lg">
-                        Slide 4 – News & Articles
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="h-120 flex items-center justify-center bg-orange-500 text-white text-2xl font-bold rounded-lg">
-                        Slide 5 – About Sports in India
-                    </div>
-                </SwiperSlide> */}
             </Swiper>
+
+            {/* custom pagination container positioned at bottom center (styled with Tailwind) */}
+            <div className="custom-pagination absolute bottom-4 left-0 right-0 flex justify-center z-50"></div>
         </div>
     )
 }

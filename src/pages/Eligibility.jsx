@@ -1,6 +1,7 @@
 import YouTube from 'react-youtube'
 import { motion } from "framer-motion";
 import GsapEffect from '../components/GsapEffect';
+import { useEffect, useState } from 'react';
 
 const pathData = [
     {
@@ -36,41 +37,71 @@ const pathData = [
 ];
 
 const tennisScholarships = [
-  {
-    title: " Govt Schemes",
-    details: "Khelo India (₹5L/yr), TOPS (Olympic support), SAI Training Centers (free coaching & facilities).",
-  },
-  {
-    title: " AITA & State",
-    details: "All India Tennis Association camps, junior travel grants, State Tennis Associations financial aid.",
-  },
-  {
-    title: " International",
-    details: "ITF Grand Slam Development grants, US College Tennis Scholarships (NCAA full/partial).",
-  },
-  {
-    title: " Career & Awards",
-    details: "Sports quota in jobs & colleges, Arjuna Award, cash prizes from states.",
-  },
+    {
+        title: " Govt Schemes",
+        details: "Khelo India (₹5L/yr), TOPS (Olympic support), SAI Training Centers (free coaching & facilities).",
+    },
+    {
+        title: " AITA & State",
+        details: "All India Tennis Association camps, junior travel grants, State Tennis Associations financial aid.",
+    },
+    {
+        title: " International",
+        details: "ITF Grand Slam Development grants, US College Tennis Scholarships (NCAA full/partial).",
+    },
+    {
+        title: " Career & Awards",
+        details: "Sports quota in jobs & colleges, Arjuna Award, cash prizes from states.",
+    },
 ];
 
-const FlipCard = ({ title, details }) => (
-  <motion.div
-    className="group w-64 h-40 [perspective:1000px]"
-    whileHover={{ scale: 1.05 }}
-  >
-    <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-      {/* Front */}
-      <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-orange-600 via-white to-green-600 text-white font-bold text-lg [backface-visibility:hidden] shadow-xl">
-        {title}
+
+
+// Detect mobile / tablet screens
+
+
+
+const FlipCard = ({ title, details }) => {
+  const [isActive, setIsActive] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth <= 768);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const handleClick = () => {
+    if (isMobile) setIsActive((prev) => !prev);
+  };
+
+  return (
+    <motion.div
+      className="group w-64 h-40 [perspective:1000px] cursor-pointer"
+      whileHover={!isMobile ? { scale: 1.05 } : {}}
+      onClick={handleClick}
+    >
+      <div
+        className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
+          isActive
+            ? "[transform:rotateY(180deg)]"
+            : "group-hover:[transform:rotateY(180deg)]"
+        }`}
+      >
+        {/* Front */}
+        <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-gradient-to-r from-orange-600 via-red-500 to-yellow-500 text-white font-bold text-lg [backface-visibility:hidden] shadow-xl">
+          {title}
+        </div>
+
+        {/* Back */}
+        <div className="absolute inset-0 flex items-center justify-center p-4 rounded-2xl bg-white text-gray-800 text-sm font-medium [transform:rotateY(180deg)] [backface-visibility:hidden] shadow-xl">
+          {details}
+        </div>
       </div>
-      {/* Back */}
-      <div className="absolute inset-0 flex items-center justify-center p-4 rounded-2xl bg-white text-gray-800 text-sm font-medium [transform:rotateY(180deg)] [backface-visibility:hidden] shadow-xl">
-        {details}
-      </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 
 const Eligibility = () => {
@@ -169,6 +200,7 @@ const Eligibility = () => {
                     ))}
                 </div>
                 <section className="px-20 py-10  ">
+
                     <h2 className="text-3xl text-center font-bold mb-6">Eligibility</h2>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700">
                         <li>Players must be registered with a recognized sports authority or association.</li>
@@ -177,19 +209,19 @@ const Eligibility = () => {
                         <li>For international events, players must represent their country with official approval.</li>
                         <li>Medical fitness clearance may be required for participation.</li>
                     </ul>
-               
-                <div className="min-h-screen flex flex-col items-center py-12">
-      <h2 className="text-3xl font-bold mb-10 ">
-         Tennis Scholarships & Benefits
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {tennisScholarships.map((item, index) => (
-          <FlipCard key={index} title={item.title} details={item.details} />
-        ))}
-      </div>
-                 </div>
+
+                    <div className="min-h-screen flex flex-col items-center py-12">
+                        <h2 className="text-3xl font-bold mb-10 ">
+                            Tennis Scholarships & Benefits
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {tennisScholarships.map((item, index) => (
+                                <FlipCard key={index} title={item.title} details={item.details} />
+                            ))}
+                        </div>
+                    </div>
                 </section>
-                  
+
             </div>
 
             <div className='bg-red-600 h-100'>

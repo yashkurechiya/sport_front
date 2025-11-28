@@ -53,7 +53,7 @@ const EligibilityHome = () => {
       <div className='grid lg:grid-cols-4 grid-cols-2 lg:w-300 px-5 lg:px-20 lg:gap-10 gap-5 items-center justify-center'>
         {
           data.map((ele) => (
-            <div key={ele.id} className='  lg:p-3 bg-slate-100 py-5 gap-5 rounded-lg shadow-lg items-center lg:min-w-50 justify-center flex flex-col lg:h-70 h-75'>
+            <div key={ele.id} className='  lg:p-3 bg-slate-100 py-5 gap-5 rounded-lg hover:shadow-lg items-center lg:min-w-50 justify-center flex flex-col lg:h-70 h-75'>
               <img className='lg:w-15 w-10 text-white' src={ele.logo} alt={ele.title} />
               <h3 className='lg:text-xl text-center font-semibold my-2'>{ele.title}</h3>
               {

@@ -23,10 +23,10 @@ export default function GameFooter() {
         <div>
           <h3 className="text-xl font-semibold mb-4 text-blue-800">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            {["Home", "Sports", "Events", "Academy", "News", "About"].map((link, i) => (
+            {["Home", "Sport", "Tournament", "Academy", "Stories", "About"].map((link, i) => (
               <motion.li 
                 key={i}
-                whileHover={{ scale: 1.1, x: 6 }}
+                whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 100 }}
               >
                 <a href={`/${link.toLowerCase()}`} className="hover:text-purple-400 transition-colors">
@@ -40,7 +40,7 @@ export default function GameFooter() {
         {/* Contact */}
         <div>
           <h3 className="text-xl font-semibold mb-4 text-purple-400">Contact</h3>
-          <p className="text-sm">📧 support@gameverse.com</p>
+          <p className="text-sm">📧 support@indianolympics.com</p>
           <p className="text-sm">📍 New Delhi, India</p>
         </div>
 
@@ -52,9 +52,9 @@ export default function GameFooter() {
               <motion.a
                 key={i}
                 href="#"
-                whileHover={{ scale: 1.3, rotate: 8 }}
-                transition={{ type: "spring", stiffness: 250 }}
-                className="p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-cyan-400 hover:text-pink-500 shadow-lg shadow-cyan-500/20"
+                whileHover={{ scale: 1.2, rotate: 0 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-cyan-400 hover:text-white shadow-lg shadow-cyan-500/20"
               >
                 <Icon size={20} />
               </motion.a>
@@ -65,7 +65,7 @@ export default function GameFooter() {
 
       {/* Bottom Line */}
       <div className="mt-12 text-center text-sm text-gray-500 border-t border-gray-800 pt-6">
-        © {new Date().getFullYear()} GameVerse. All Rights Reserved. ⚡
+        © {new Date().getFullYear()} GoIndia. All Rights Reserved. ⚡
       </div>
     </footer>
   );

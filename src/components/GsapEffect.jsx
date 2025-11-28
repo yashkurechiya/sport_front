@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GameFooter from "./Footer";
 import { useState } from "react";
 import axios from "axios";
+import {motion} from 'framer-motion'
 import { data, useParams } from "react-router-dom";
 import Loader from "./Loader";
 
@@ -56,8 +57,8 @@ const TennisTimeline = () => {
   const containerRef = useRef([]);
   const { id } = useParams();
   const [sportD, setSportD] = useState([]);
-     const backend = import.meta.env.VITE_BACKEND_URL ?? '';
-    const base = backend.replace(/\/$/, ''); // remove trailing slash if present
+  const backend = import.meta.env.VITE_BACKEND_URL ?? '';
+  const base = backend.replace(/\/$/, ''); // remove trailing slash if present
 
   const handleData = async () => {
     try {
@@ -129,45 +130,67 @@ const TennisTimeline = () => {
 
 
   return (
-    <div className="w-full bg-slate-100 lg:py-16 my-5 lg:my-0 py-5 ">
-      <h2 className="lg:text-3xl text-xl font-bold text-center mb-12 text-black">
+    <div className="w-full bg-white   lg:py-20 py-10">
+      {/* Heading */}
+      <h2 className="text-3xl lg:text-4xl font-extrabold text-center mb-16 text-gray-900 tracking-tight">
         Indian Champions
       </h2>
-    {
-      data.length > 0 ? 
-      <div className="flex flex-col  gap-16 max-w-6xl mx-auto px-6">
-        {sportD.map((item, index) => (
-          <div
-            key={index}
-            ref={(el) => (containerRef.current[index] = el)}
-            className={`flex flex-col md:flex-row  items-center gap-10 ${index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse"
-              }`}
-          >
-            {/* Player Image */}
-            <img
-              src={item.img}
-              alt={item.player}
-              className="timeline-image  w-auto lg:h-84 object-cover rounded-lg"
-            />
 
-            {/* Content */}
-            <div className="timeline-content shadow-lg max-w-md bg-white p-6 rounded-lg border-l-4 border-indigo-500">
-              <h3 className="lg:text-xl text-lg font-bold text-indigo-600">
-                {item.year} – {item.player}
-              </h3>
-              <p className="lg:text-lg text-sm font-semibold mt-2">{item.achievement}</p>
-              <p className="text-gray-700 mt-3 lg:text-base text-xs leading-relaxed">{item.story}</p>
-            </div>
-          </div>
-        ))}
+      {data.length > 0 ? (
+        <div className="flex flex-col gap-20 max-w-6xl mx-auto px-6">
+
+          {sportD.map((item, index) => (
+            <motion.div
+              key={index}
+              ref={(el) => (containerRef.current[index] = el)}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className={`flex flex-col lg:flex-row items-center gap-10 ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+                }`}
+            >
+
+              {/* Player Image */}
+              <motion.img
+                src={item.img}
+                alt={item.player}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+                className="w-full lg:w-auto lg:h-80 object-cover rounded-xl shadow-lg ring-1 ring-slate-200"
+              />
+
+              {/* Content */}
+              <div className="bg-white shadow-xl rounded-2xl p-6 lg:p-8 border border-slate-200 max-w-xl">
+                <h3 className="text-xl lg:text-2xl font-bold text-indigo-600">
+                  {item.year} – {item.player}
+                </h3>
+
+                <p className="text-gray-800 font-medium mt-2 text-sm lg:text-lg">
+                  {item.achievement}
+                </p>
+
+                <p className="text-gray-600 mt-4 text-sm lg:text-base leading-relaxed">
+                  {item.story}
+                </p>
+              </div>
+
+            </motion.div>
+          ))}
+
+        </div>
+      ) : (
+        <div className="flex justify-center py-20">
+          <Loader />
+        </div>
+      )}
+
+      <div className="mt-20">
+        <GameFooter />
       </div>
-      : 
-      <div>
-        <Loader />
-      </div>
-    } 
-      <GameFooter />
     </div>
+
+
 
   );
 };

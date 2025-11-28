@@ -54,17 +54,17 @@ const GetDetail = () => {
 
     ];
   return (
-   <div className='my-20 justify-center items-center text-center space-y-10 '>
+   <div className='my-20  justify-center items-center text-center space-y-10 '>
   <h1 className='lg:text-4xl md:text-3xl text-2xl my-10 font-semibold text-center'>Get Your Sport</h1>
 
-  <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-15 md:gap-5 gap-5 lg:px-70 px-10 justify-items-center  '>
+  <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-5 md:gap-5 gap-5 lg:px-70 px-10 justify-items-center  '>
     {data.map((item) => (
     <a href={item.link}>  
-      <div key={item.id} className='flex flex-col items-center group'>
+      <div key={item.id} className='lg:h-50 flex p-10  flex-col items-center group'>
         <img
           src={item.logo}
           alt={item.name}
-          className='lg:w-20 lg:h-20 h-10 object-contain mb-4 group-hover:scale-110 transition-transform duration-200 '
+          className='lg:w-20 lg:h-20 h-10 object-contain mb-5 group-hover:scale-110 transition-transform duration-200 '
         />
         <h2 className='lg:text-lg font-semibold text-center '>{item.name}</h2>
       </div>

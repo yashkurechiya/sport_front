@@ -23,7 +23,7 @@ const NewsSection = () => {
     <div className="lg:my-15 lg:px-20 px-5">
       <h1 className="lg:text-4xl md:text-3xl text-xl lg:my-10 mb-5 font-semibold text-center">Sports News</h1>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5 justify-start">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:px-40 justify-start">
         {news.map((item, index) => (
           <div
             key={index}

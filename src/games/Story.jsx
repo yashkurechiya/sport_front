@@ -32,7 +32,7 @@ const Story = ({ limit, showbutton }) => {
   return (
     <>
       <div className='justify-center text-center flex flex-col '>
-        <h1 className='flex text-center mt-5 lg:mt-0 justify-center py-10 lg:text-4xl md:text-3xl text-xl font-semibold lg:my-5'>Stories of Athletes</h1>
+        <h1 className='flex text-center mt-5 lg:mt-10 justify-center py-10 lg:text-4xl md:text-3xl text-xl font-semibold lg:my-5'>Stories of Athletes</h1>
         {
           storyData && storyData.length > 0 ? 
         
