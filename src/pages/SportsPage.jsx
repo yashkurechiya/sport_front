@@ -73,7 +73,7 @@ const SportsPage = ({ data }) => {
         </div>
 
         {/* Rules Section */}
-        <div className="m-6 sm:m-10 bg-white/70 backdrop-blur-xl border border-gray-200 rounded-3xl   overflow-hidden">
+        <div className="m-6 sm:m-10 mt-20 lg:mt-0 bg-white/70 backdrop-blur-xl border border-gray-200 rounded-3xl   overflow-hidden">
 
           {/* Heading */}
           <h1 className="text-3xl sm:text-5xl font-bold text-center text-gray-800 py-10 tracking-tight">

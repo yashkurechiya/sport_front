@@ -55,7 +55,7 @@ const GetDetail = () => {
 
     ];
   return (
-   <div className='my-20  justify-center items-center text-center space-y-10 '>
+   <div className='lg:my-20 mb-10 justify-center items-center text-center space-y-10 '>
   <h1 className='lg:text-4xl md:text-3xl text-2xl my-10 font-semibold text-center'>Get Your Sport</h1>
 
   <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-5 md:gap-5 gap-5 lg:px-70 px-10 justify-items-center  '>

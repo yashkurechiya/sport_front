@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const InterCart = () => {
     return (
-        <div className='lg:flex  grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-5 justify-items-center ms-10 lg:gap-10 lg:p-5 lg:my-0 p-3 items-center justify-center'>
+        <div className='lg:flex  grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-5 justify-items-center  lg:gap-10 lg:p-5 lg:my-0 p-3 items-center justify-center'>
             <Link to='/olympics'>
                 <div className="relative cursor-pointer lg:h-50 lg:w-80 h-30 w-50 overflow-hidden rounded-lg group">
                     <img

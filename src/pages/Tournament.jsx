@@ -44,39 +44,62 @@ const Tournament = () => {
             <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent h-100'></div>
             <div className='mt-20 lg:px-20'>
                 <div>
-                    <h1 className='absolute lg:top-40 top-50 lg:left-150 z-10 text-white  text-center item-center left-1/4 justify-center my-5 py-5 text-3xl lg:text-5xl font-semibold '>Tournaments</h1>
+                    <h1 className='absolute lg:top-40 top-50 lg:left-150 z-10 text-white  text-center item-center left-1/5 justify-center my-5 py-5 text-3xl lg:text-5xl font-semibold '>Tournaments</h1>
                     <div className='flex justify-center mb-10 mt-[-50px]   items-center w-full lg:gap-12'>
-                        <div className="flex items-center w-[90%] md:w-96 lg:w-[420px] 
-                bg-white shadow-md shadow-black/20 rounded-full px-4 py-2 gap-3">
+                        <div className="
+  w-[80%] sm:w-[85%] md:w-[420px] lg:w-[480px]
+  flex items-center gap-3 
+  bg-white border border-gray-200
+  shadow-sm rounded-full 
+  px-4 py-2
+">
 
-                            <FaSearch className="hidden md:block opacity-50 scale-200 text-lg" />
+                            {/* Search Icon */}
+                            <FaSearch className="text-gray-500 hidden md:block text-xl" />
 
+                            {/* Search Input */}
                             <input
                                 type="text"
                                 placeholder="Search..."
-                                className="flex-1 bg-transparent outline-none text-black placeholder-gray-400"
+                                className="
+      flex-1 
+      bg-transparent 
+      text-sm sm:text-base
+      placeholder-gray-400 
+      text-gray-800
+      outline-none
+    "
                             />
 
+                            {/* Select Box */}
                             <select
                                 value={level}
                                 onChange={handleLevel}
-                                className="bg-gray-100 text-black rounded-full px-3 py-2 outline-none border-none"
+                                className="
+      bg-gray-100 
+      rounded-full 
+      px-1 py-2
+      text-sm sm:text-base
+      text-gray-800
+      hidden lg:block
+      outline-none 
+      border border-gray-300
+      hover:bg-gray-200 transition
+    "
                             >
                                 {levels.map((lvl) => (
-                                    <option
-                                        key={lvl}
-                                        value={lvl}
-                                        className="text-black"
-                                    >
+                                    <option key={lvl} value={lvl} className="text-gray-800">
                                         {lvl}
                                     </option>
                                 ))}
                             </select>
+
                         </div>
+
 
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 p-10 mt-10 justify-items-center'>
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 p-10 mt-[-2rem] lg:mt-10 justify-items-center'>
                     {tournaData.map(tournament => (level === "All levels" || tournament.level === level) && (
                         <TournamentCard
                             key={tournament._id}

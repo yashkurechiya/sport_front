@@ -20,7 +20,7 @@ const Home = () => {
         <Hero />
       </div>
         <Inter  />
-        <div className='my-10'>
+        <div className='my-1 lg:my-10'>
              <ScrollHori />
         </div>
          
