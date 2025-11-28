@@ -110,7 +110,7 @@ const SportsPage = ({ data }) => {
 
 
         {/* Path to Olympics */}
-        <div className="lg:flex flex-col lg:my-10 lg:justify-between justify-center items-center px-10 gap-5 lg:flex-row flex">
+        <div className="lg:flex flex-col lg:my-10 lg:justify-between justify-center items-center lg:px-10 gap-5 lg:flex-row flex">
           <div className="flex flex-col w-1/2  items-center">
             <h1 className="lg:text-3xl text-xl text-center lg:text-start mb-5 font-bold p-2">Path to Olympics</h1>
             {pathData.map((step, index) => (
@@ -137,7 +137,7 @@ const SportsPage = ({ data }) => {
           </div>
 
           {/* Scholarships Section */}
-          <div className="w-1/2 lg:px-20 lg:mt-[-10rem]">
+          <div className="w-1/2 lg:px-20 px-0 lg:mt-[-10rem]">
             <h2 className="lg:text-3xl text-xl text-center font-bold mb-6">Eligibility</h2>
             <ul className="list-disc lg:pl-6 ml-[-25px] lg:mb-10 w-60 lg:w-full space-y-2 text-gray-700">
               <li>Players must be registered with a recognized sports authority or association.</li>

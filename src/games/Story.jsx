@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import axios from 'axios'
 import { useState } from 'react';
 import Loader from '../components/Loader';
+import { Link } from 'react-router-dom';
 
 const Story = ({ limit, showbutton }) => {
 
@@ -53,8 +54,8 @@ const Story = ({ limit, showbutton }) => {
 
         <div className='justify-center text-center'>
 
-          <a href="/story " className='justify-center w-full text-center'>
-            <button className='lg:p-3 p-1 text-center cursor-pointer md:text-xl md:p-2 lg:text-medium justify-center my-10 bg-red-600 hover:bg-red-700 font-semibold rounded-lg text-xs text-white'>Know More</button></a>
+          <Link to="/story " className='justify-center w-full text-center'>
+            <button className='lg:p-3 p-1 text-center cursor-pointer md:text-xl md:p-2 lg:text-medium justify-center my-10 bg-red-600 hover:bg-red-700 font-semibold rounded-lg text-xs text-white'>Know More</button></Link>
         </div>
       )}
 
