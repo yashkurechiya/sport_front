@@ -61,7 +61,7 @@ const GetDetail = () => {
 
       <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-5 md:gap-5 gap-5 lg:px-70 px-10 justify-items-center  '>
         {data.map((item) => (
-          <a href={item.link}>
+          <Link to={item.link}>
             <div key={item.id} className='lg:h-50 flex p-10  flex-col items-center group'>
               <img
                 src={item.logo}
@@ -70,7 +70,7 @@ const GetDetail = () => {
               />
               <h2 className='lg:text-lg font-semibold text-center '>{item.name}</h2>
             </div>
-          </a>
+          </Link>
 
         ))}
       </div>
