@@ -20,7 +20,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await api.post(`${backend}/api/auth/login`, form);
+      const res = await api.post("/api/auth/login", form);
 
       // Save token + user
       localStorage.setItem("token", res.data.token);
@@ -34,7 +34,7 @@ export default function Login() {
         navigate("/");
       }
     } catch (err) {
-      alert(err.response?.data?.msg || "Login react");
+      alert(err.response?.data?.msg || "Login error");
     }
   };
 

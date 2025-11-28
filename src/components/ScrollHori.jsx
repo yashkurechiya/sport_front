@@ -41,26 +41,51 @@ const items = [
 
 const ScrollHori = () => {
     return (
-        <div className="w-full overflow-hidden gap-30 flex relative">
-            <div className="flex animate-scroll items-center gap-20 space-x-4">
-                {items.map((item, idx) => (
-                    <div key={idx} className="w-20 rounded-lg flex items-center gap-2">
-                        <img src={item.img} alt="" className="w-10" /><span>{item.label}</span>
-                    </div>
-                ))}
-            </div>
-            <div
-                aria-hidden
-                className="flex animate-scroll items-center gap-20 space-x-4 absolute top-0 left-full"
-                style={{ animationDelay: '1.5s' }} // adjust delay to match animation duration
-            >
-                {items.map((item, idx) => (
-                    <div key={idx} className="w-20 rounded-lg flex items-center gap-2">
-                        <img src={item.img} alt="" className="w-10" /><span>{item.label}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
+        <div className="w-full relative overflow-hidden py-4 bg-white">
+  {/* MAIN TRACK */}
+  <div className="flex items-center gap-10 animate-marquee whitespace-nowrap">
+    {items.map((item, idx) => (
+      <div
+        key={idx}
+        className="flex items-center gap-3 px-4 py-2 rounded-xl   
+                   transition-all     "
+      >
+        <img
+          src={item.img}
+          alt={item.label}
+          className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+        />
+        <span className="text-sm sm:text-base font-medium text-gray-700">
+          {item.label}
+        </span>
+      </div>
+    ))}
+  </div>
+
+  {/* DUPLICATE TRACK FOR INFINITE LOOP */}
+  <div
+    aria-hidden="true"
+    className="flex items-center gap-10 animate-marquee2 whitespace-nowrap absolute top-4 left-0"
+  >
+    {items.map((item, idx) => (
+      <div
+        key={idx}
+        className="flex items-center gap-3 px-4 py-2 rounded-xl  
+                   transition-all   "
+      >
+        <img
+          src={item.img}
+          alt={item.label}
+          className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+        />
+        <span className="text-sm sm:text-base font-medium text-gray-700">
+          {item.label}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+
     );
 };
 
