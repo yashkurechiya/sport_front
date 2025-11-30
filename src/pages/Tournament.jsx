@@ -100,7 +100,7 @@ const Tournament = () => {
                     </div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 p-10 mt-[-2rem] lg:mt-10 justify-items-center'>
-                    {tournaData.map(tournament => (level === "All levels" || tournament.level === level) && (
+                    {tournaData.map(tournament => (level === "All levels" || tournament.category === level) && (
                         <TournamentCard
                             key={tournament._id}
                             id={tournament._id}

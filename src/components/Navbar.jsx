@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logosport.png";
 import { AuthContext } from "../context/AuthContext";
 
@@ -50,23 +50,70 @@ const Navbar = () => {
         <div className="flex lg:gap-10">
           <ul className="lg:flex hidden md:flex md:pr-15 items-center cursor-pointer lg:gap-20 md:gap-8 font-semibold">
 
-            <Link to="/"><li>Home</li></Link>
-            <Link to="/sport"><li>Sport</li></Link>
-            <Link to="/tournament"><li>Tournament</li></Link>
-            <Link to="/academy"><li>Academy</li></Link>
-            <Link to="/story"><li>Stories</li></Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `relative px-2 py-1 transition 
+     ${isActive ? "  text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500 "}`
+              }
+            >
+              Home
+              
+            </NavLink>
 
-            {/* ADMIN LINK */}
-            {user?.role === "admin" && (
-              <Link to="/admin"><li>Admin</li></Link>
-            )}
+            <NavLink
+              to="/sport"
+              className={({ isActive }) =>
+                `relative px-2 py-1 transition 
+     ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
+              }
+            >
+              Sport
+            </NavLink>
 
-            {/* USER PROFILE LINK */}
-            {user?.role === "user" && (
-              <Link to="/profile"><li>Profile</li></Link>
-            )}
+            <NavLink
+              to="/tournament"
+              className={({ isActive }) =>
+                `relative px-2 py-1 transition 
+     ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
+              }
+            >
+              Tournament
+            </NavLink>
 
-            {/* IF NO USER → SHOW LOGIN */}
+            <NavLink
+              to="/academy"
+              className={({ isActive }) =>
+                `relative px-2 py-1 transition 
+     ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
+              }
+            >
+              Academy
+            </NavLink>
+
+            <NavLink
+              to="/story"
+              className={({ isActive }) =>
+                `relative px-2 py-1 transition 
+     ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
+              }
+            >
+              Stories
+            </NavLink>
+ 
+                  {user?.role === "admin" && (
+                    <NavLink to="/admin" className={({ isActive }) => `relative px-2 py-1 transition ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`}>
+                    <li>Admin</li>
+                    </NavLink>
+                  )}
+
+                  {/* USER PROFILE LINK */}
+                  {user?.role === "user" && (
+                    <NavLink to="/profile" className={({ isActive }) => `relative px-2 py-1 transition ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`}>
+                    <li>Profile</li>
+                    </NavLink>
+                  )}
+ 
             {!user && (
               <Link to="/login">
                 <li className="text-blue-600 hover:underline">Login</li>
@@ -81,43 +128,55 @@ const Navbar = () => {
 
               {/* PUBLIC LINKS */}
               <Link to="/" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-orange-500">Home</span>
+                <span className="text-xl hover:text-blue-500">Home</span>
               </Link>
               <Link to="/sport" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-orange-500">Sport</span>
+                <span className="text-xl hover:text-blue-500">Sport</span>
               </Link>
               <Link to="/tournament" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-orange-500">Tournament</span>
+                <span className="text-xl hover:text-blue-500">Tournament</span>
               </Link>
               <Link to="/academy" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-orange-500">Academy</span>
+                <span className="text-xl hover:text-blue-500">Academy</span>
               </Link>
               <Link to="/story" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-orange-500">Stories</span>
+                <span className="text-xl hover:text-blue-500">Stories</span>
               </Link>
 
               {/* ADMIN ONLY */}
               {user?.role === "admin" && (
-                <Link to="/admin" onClick={() => setMenuOpen(false)}>
-                  <span className="text-xl text-red-600">Admin</span>
-                </Link>
+                <NavLink
+                  to="/admin"
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `text-xl ${isActive ? "text-blue-700 font-semibold" : "text-blue-600 hover:text-blue-500"}`
+                  }
+                >
+                  Admin
+                </NavLink>
               )}
 
               {/* USER / ADMIN PROFILE */}
               {user && (
-                <Link to="/profile" onClick={() => setMenuOpen(false)}>
-                  <span className="text-xl hover:text-orange-500">Profile</span>
-                </Link>
+                <NavLink
+                  to="/profile"
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `text-xl ${isActive ? "text-blue-700 font-semibold" : "hover:text-blue-500"}`
+                  }
+                >
+                  Profile
+                </NavLink>
               )}
 
-              {/* AUTH BUTTONS */}
+            
               {!user ? (
                 <Link to="/login" onClick={() => setMenuOpen(false)}>
-                  <span className="text-xl hover:text-orange-500">Login</span>
+                  <span className="text-xl hover:text-blue-500">Login</span>
                 </Link>
               ) : (
                 <span
-                  className="text-xl text-red-600 cursor-pointer"
+                  className="text-xl text-blue-600 cursor-pointer"
                   onClick={() => {
                     setMenuOpen(false);
                     handleLogout();
