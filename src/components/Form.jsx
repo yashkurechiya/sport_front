@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import aiadvisor from '../assets/advisor.png'
+import api from "../api/axios";
 
 const SportForm = () => {
   const [formData, setFormData] = useState({
@@ -25,8 +26,8 @@ const SportForm = () => {
     setSports([]);
 
     try {
-      const response = await axios.post(
-        `${base}/api/suggest-sport`,
+      const response = await api.post(
+        `/api/suggest-sport`,
         formData
       );
 
