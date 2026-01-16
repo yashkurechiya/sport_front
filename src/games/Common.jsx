@@ -1,13 +1,5 @@
 import React from "react";
 
-/**
- * CommonWG.jsx
- * Modern, responsive Tailwind component for "Commonwealth Games" content.
- *
- * Usage:
- *   import CommonWG from "../components/CommonWG";
- *   <CommonWG />
- */
 
 export default function Common() {
   return (

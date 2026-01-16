@@ -33,7 +33,7 @@ const Story = ({ limit, showbutton }) => {
   return (
     <>
       <div className='justify-center text-center flex flex-col '>
-        <h1 className='flex text-center mt-5 lg:mt-10 justify-center py-10 lg:text-4xl md:text-3xl text-xl font-semibold lg:my-5'>Stories of Athletes</h1>
+          <h1 className="lg:text-4xl text-2xl my-10 font-bold text-slate-900">Stories of Athletes</h1>
         {
           storyData && storyData.length > 0 ? 
         
@@ -55,7 +55,7 @@ const Story = ({ limit, showbutton }) => {
         <div className='justify-center text-center'>
 
           <Link to="/story " className='justify-center w-full text-center'>
-            <button className='lg:p-3 p-1 text-center cursor-pointer md:text-xl md:p-2 lg:text-medium justify-center my-10 bg-red-600 hover:bg-red-700 font-semibold rounded-lg text-xs text-white'>Know More</button></Link>
+           <button className="lg:px-10 lg:py-4 px-5 py-2 lg:mt-10 mt-10 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg transition">Know More</button></Link>
         </div>
       )}
 

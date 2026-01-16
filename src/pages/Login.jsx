@@ -20,6 +20,8 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      console.log(api);
+      
       const res = await api.post("/api/auth/login", form);
 
       // Save token + user
@@ -86,9 +88,10 @@ export default function Login() {
         {/* Submit Button */}
         <button
           type="submit"
+          onClick={handleSubmit}
           className="
             w-full bg-black text-white py-3 rounded-xl font-semibold
-            hover:bg-gray-900 transition
+            hover:bg-gray-900 transition cursor-pointer
           "
         >
           Login

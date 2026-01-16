@@ -18,23 +18,81 @@ export default function ViewTour() {
     }
   };
 
+
   // Enroll user
   const handleEnroll = async () => {
-
-    const token = localStorage.getItem("token");
-    if (!token) {
-      toast.error("Please log in to enroll");
-      // alert("Please log in to enroll");
-      return;
-    }
     try {
-      const res = await api.post(`/api/tour/enroll/${id}`);
-      toast.success("Enrolled successfully!");
-      fetchTournament();
-    } catch (err) {
-      alert(err.response?.data?.message || "Failed to enroll");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        toast.error("Please log in to enroll");
+        // alert("Please log in to enroll");
+        return;
+      }
+
+      const res = await api.post("/api/payment/create-order", {
+        amount: tournament.entryFee || 0,
+        tournamentId: id
+      })
+
+      const order = res.data;
+
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount: order.amount,
+        currency: "INR",
+        name: "Tournament Enrollment",
+        description: "Enroll for the tournament",
+        order_id: order.id,
+        handler: async function (response) {
+          await verifyPayment(response);
+        },
+        theme: {
+          color: '#000000'
+        }
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+
+    } catch (error) {
+      console.error("Enrollment Error:", error);
+      toast.error("unable to start payment")
     }
   };
+
+  const verifyPayment = async (paymentData) => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log(paymentData);
+
+
+      await api.post("/api/payment/verify", {
+        razorpay_order_id: paymentData.razorpay_order_id,
+        razorpay_payment_id: paymentData.razorpay_payment_id,
+        razorpay_signature: paymentData.razorpay_signature,
+        tournamentId: id
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+      );
+      toast.success("Enrollment successful!");
+      fetchTournament();
+    } catch (error) {
+      const message =
+        error.response?.data?.message || "Payment verification failed";
+
+      console.error("Payment Verification Error:", message);
+      toast.error(message);
+    }
+  };
+  const isExpired = tournament
+    ? new Date(tournament.registrationDeadline) < new Date()
+    : false;
+
+
+
 
   useEffect(() => {
     fetchTournament();
@@ -46,7 +104,7 @@ export default function ViewTour() {
   return (
     <div className="max-w-6xl mx-auto mt-30 lg:px-30 px-4 pb-16">
 
-      
+
 
       {/* Banner Image */}
       {tournament.image && (
@@ -86,7 +144,7 @@ export default function ViewTour() {
               {tournament.category}
             </span>
             <span className="px-3 py-1 text-sm rounded-full border border-green-300 bg-green-50 text-green-700">
-              {tournament.state}
+              {tournament.computedState}
             </span>
           </div>
         </div>
@@ -146,14 +204,17 @@ export default function ViewTour() {
       {/* CTA Button */}
       <button
         onClick={handleEnroll}
-        className="
-      w-full mt-12 py-3 text-white text-lg
-      bg-black rounded-xl font-medium
-      hover:bg-gray-900 transition
-    "
+        disabled={isExpired}
+        className={`
+    w-full mt-12 py-3 text-white text-lg rounded-xl font-medium transition
+    ${isExpired
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-black hover:bg-gray-900 cursor-pointer"}
+  `}
       >
-        Enroll Now
+        {isExpired ? "Registration Closed" : "Enroll Now"}
       </button>
+
     </div>
 
 

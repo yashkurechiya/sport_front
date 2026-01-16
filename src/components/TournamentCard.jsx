@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const TournamentCard = ({
   id,
   logo,
-  status,
+  state,
   title,
   date,
   description,
   location,
   enrolled,
-  state,
+  computedState,
 }) => {
   const formattedDate = new Date(date).toLocaleDateString("en-IN", {
     day: "2-digit",
@@ -20,21 +20,22 @@ const TournamentCard = ({
 
   return (
     <div
-      className="
-        w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm
-        bg-white rounded-2xl border border-gray-100 
-        shadow-sm hover:shadow-lg 
-        transition-all duration-300 
-        flex flex-col gap-3 p-5
-      "
+      className={`
+    w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm
+    bg-white rounded-2xl border border-gray-100 
+    shadow-sm hover:shadow-lg 
+    transition-all duration-300 
+    flex flex-col gap-3 p-5
+    ${computedState === "Outdated" ? "opacity-60 grayscale" : ""}
+  `}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
         {state && (
-        <p className="text-blue-700 text-sm font-semibold text-start pt-2">
-          {state}
-        </p>
-      )}
+          <p className="text-blue-700 text-sm font-semibold text-start pt-2">
+            {state}
+          </p>
+        )}
 
         <span
           className="
@@ -42,7 +43,7 @@ const TournamentCard = ({
             bg-yellow-100 text-yellow-700
           "
         >
-          {status}
+          {computedState}
         </span>
       </div>
 
@@ -73,11 +74,12 @@ const TournamentCard = ({
       </div>
 
       {/* State */}
-      
+
 
       {/* Button */}
       <Link to={`/tournament/${id}`} className="mt-2">
         <button
+          disabled={computedState === "outdated"}
           className="
             w-full py-2.5 
             bg-blue-600 hover:bg-blue-700 

@@ -4,8 +4,6 @@ import aiadvisor from '../assets/advisor.png'
 
 const SportForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    age: "",
     height: "",
     weight: "",
     hobbies: "",
@@ -49,38 +47,97 @@ const SportForm = () => {
 
   return (
     <>
-      <h1 className="lg:text-4xl md:text-3xl text-xl text-center font-semibold mb-6 text-gray-900"> AI Sports Advisor</h1>
-      <div className="flex lg:h-100 h-100  overflow-hidden ">
-        <img src={aiadvisor} alt="" className="lg:rounded-r-3xl lg:h-100 h-100 lg:w-full  shadow-r-lg shadow-2xl shadow-blue-900" />
+          <h1 className="lg:text-4xl text-2xl text-center my-10 font-bold text-slate-900"> AI Sports Advisor</h1>
+      <div className="flex lg:h-100 h-auto lg:bg-white rounded-lg bg-zinc-100 lg:p-0 p-5 overflow-hidden lg:m-20 m-10 ">
 
         <form
           onSubmit={handleSubmit}
-          className="text-white p-6  absolute py-2 lg:right-50 grid grid-cols-2 gap-5  w-full max-w-lg space-y-4"
+          className="
+    relative lg:max-w-6xl mx-auto 
+    grid grid-cols-1 lg:grid-cols-2 
+    gap-10 lg:gap-16 
+     sm:px-6 lg:px-8
+    items-center "
         >
-          {Object.keys(formData).map((key) => (
-            <div key={key} className="flex flex-col">
-              <label className="mb-1 text-sm font-semibold capitalize">
-                {key.replace(/([A-Z])/g, " $1")}
-              </label>
-              <input
-                type="text"
-                name={key}
-                value={formData[key]}
-                onChange={handleChange}
-                required={key === "name"}
-                className="p-2 rounded bg-white   shadow-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
-              />
-            </div>
-          ))}
+          {/* Left Hero Text */}
+          <div className="space-y-5 text-center lg:text-left">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+              Your Personal <br className="hidden sm:block" /> AI Sports Coach
+            </h1>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="lg:w-30  bg-red-600 shadow-md hover:bg-red-700 lg:h-13  text-xs md:text-sm lg:text-sm text-center lg:m-3 m-4 text-white cursor-pointer font-semibold rounded lg:py-2 transition-all"
-          >
-            {loading ? "Analyzing..." : "Get Sports Suggestion"}
-          </button>
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0">
+              Get personalized training, nutrition, and sport recommendations based on your body, goals, and interests.
+            </p>
+
+            {/* <button
+              type="button"
+              className="
+        bg-blue-600 hover:bg-blue-700 transition 
+        text-white font-semibold 
+        px-7 py-3 sm:px-8 sm:py-4 
+        rounded-xl shadow-lg
+      "
+            >
+              Get My AI Plan →
+            </button> */}
+          </div>
+
+          {/* Right AI Advisor Card */}
+          <div className="relative">
+            <div className="bg-white/80 backdrop-blur-xl p-5 border border-white/80 shadow rounded-2xl lg:p-6 sm:p-8">
+
+              {/* Card Title */}
+              <div className="flex items-center justify-center lg:justify-start gap-2 mb-5">
+                  <p className="lg:text-4xl text-xl text-center font-bold text-slate-900">
+                  AI Sports Advisor
+                </p>
+              </div>
+
+              {/* Inputs Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-5">
+                {Object.keys(formData).map((key) => (
+                  <div key={key} className="flex flex-col space-y-1">
+                    <label className="text-sm font-medium text-slate-700 capitalize">
+                      {key.replace(/([A-Z])/g, " $1")}
+                    </label>
+
+                    <input
+                      type="text"
+                      name={key}
+                      value={formData[key]}
+                      onChange={handleChange}
+                      required={key === "name"}
+                      className="
+                w-full px-3 py-2 
+                rounded-lg border border-slate-200 
+                focus:outline-none focus:ring-2 focus:ring-blue-500
+              "
+                      placeholder={key}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="
+          mt-6 sm:mt-8 w-full 
+          bg-blue-600 hover:bg-blue-700 transition 
+          text-white lg:text-lg text-xs font-semibold py-3 
+          rounded-xl shadow-lg disabled:opacity-60
+        "
+              >
+                {loading ? "Analyzing..." : "Generate My Training Plan →"}
+              </button>
+            </div>
+          </div>
         </form>
+
+
+
+
       </div>
 
       {sports.length > 0 && (
@@ -88,7 +145,7 @@ const SportForm = () => {
           {sports.map((sport, idx) => (
             <div
               key={idx}
-              className="bg-gray-200 p-6 rounded-2xl shadow-lg shadow-gray-400  border-red-400"
+              className="bg-gray-200 p-6 rounded-2xl shadow-lg shadow-gray-400  border-blue-400"
             >
               <h2 className="lg:text-2xl text-xl font-bold mb-2">{sport.name}</h2>
 

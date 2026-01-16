@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Sport from './pages/Sport';
 import Tournament from './pages/Tournament';
-import Academy from './pages/Academy';
 import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from './components/ProtectedRoute';
 import { SportsPageWrapper } from './components/SportsPageWrapper';
@@ -21,6 +20,7 @@ import Olympics from './games/Olympics';
 import Common from './games/Common';
 import AsianGames from './games/AsianGames';
 import {ToastContainer} from 'react-toastify'
+import Coach from './pages/Coach';
 
 const App = () => {
   return (
@@ -39,7 +39,7 @@ const App = () => {
         <Route path='/tournament' element={<Tournament />} />
         {/* <Route path='/sport/tennis' element={<Eligibility />}/> */}
         <Route path='/sport/:id' element={<SportsPageWrapper />} />
-        <Route path='/academy' element={<Academy />} />
+        <Route path='/coach' element={<Coach />} />
         <Route path='/story' element={< Stories />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />

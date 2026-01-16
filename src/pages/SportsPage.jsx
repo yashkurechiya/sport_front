@@ -156,7 +156,7 @@ const SportsPage = ({ data }) => {
           </div>
         </div>
       </motion.div>
-      <div className='bg-red-600 h-100'>
+      <div className='bg-blue-600 h-100'>
         <GsapEffect />
       </div>
     </>

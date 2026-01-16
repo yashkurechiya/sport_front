@@ -106,12 +106,13 @@ const Tournament = () => {
                             id={tournament._id}
                             logo={tournament.logo}
                             title={tournament.title}
-                            status={tournament.status}
+                            // status={tournament.computedState}
                             date={tournament.date}
                             description={tournament.description}
                             location={tournament.location}
                             enrolled={tournament.enrolled}
                             state={tournament.category}
+                            computedState={tournament.computedState}
                         />))}
                     {/* Example usage of TournamentCard with dummy data */}
                     {/* <TournamentCard title="International Open" logo="🌐" status="Upcoming" date="2024-07-15" description="A prestigious international tournament." location="London, UK" enrolled={150} state="International" /> */}

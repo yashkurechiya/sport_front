@@ -52,7 +52,7 @@ const StoryCard = ({ name, sport, link, description, img }) => {
         <h2 className="lg:text-xl font-bold">{name}</h2>
         <p className="lg:mt-2 lg:my-1 lg:text-sm text-xs">{description.slice(0, 90)}...</p>
         <a href={link}>
-          <button className="lg:p-2 p-[4px] bg-red-600 cursor-pointer hover:bg-red-800 text-sm lg:font-semibold rounded-lg">
+          <button className="lg:p-2 p-[4px] bg-blue-600 cursor-pointer hover:bg-blue-800 text-sm lg:font-semibold rounded-lg">
             Know
           </button>
         </a>

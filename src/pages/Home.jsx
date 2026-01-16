@@ -3,7 +3,7 @@ import Hero from '../components/Hero'
 import Inter from '../games/Inter'
 import Scroll from '../games/Scroll'
 import Achievement from '../games/Achievement'
-import Chart from '../games/Chart' 
+import Chart from '../games/Chart'
 // import HoriScroll from '../components/HoriScroll'
 import GameFooter from '../components/Footer'
 import ScrollHori from '../components/ScrollHori'
@@ -16,25 +16,26 @@ import NewsSection from '../games/NewsSection'
 const Home = () => {
   return (
     <div>
-        <div  className=' lg:mt-20 mt-18'>
+      <div className=' lg:mt-20 mt-18'>
         <Hero />
       </div>
-        <Inter  />
-        <div className='my-1 lg:my-10'>
-             <ScrollHori />
-        </div>
-         
-        <div>
+      <Inter />
+      <div className='my-1 lg:my-10'>
+        <ScrollHori />
+      </div>
 
-          <GetDetail />
-          <Form />
-         {/* <HoriScroll /> */}
-          <EligibilityHome />
-        </div>
-        <Story limit={8} showbutton={true} />
-        <NewsSection />
-        <GameFooter />
-        
+      <div>
+
+        <GetDetail />
+
+        {/* <HoriScroll /> */}
+        <EligibilityHome />
+      </div>
+      <Story limit={8} showbutton={true} />
+      <Form />
+      <NewsSection />
+      <GameFooter />
+
 
     </div>
   )

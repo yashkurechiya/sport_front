@@ -82,13 +82,13 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink
-              to="/academy"
+              to="/coach"
               className={({ isActive }) =>
                 `relative px-2 py-1 transition 
      ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
               }
             >
-              Academy
+              Coach
             </NavLink>
 
             <NavLink
