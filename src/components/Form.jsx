@@ -26,29 +26,43 @@ const SportForm = () => {
     setSports([]);
 
     try {
-      const response = await api.post(
-        `/api/suggest-sport`,
-        formData
-      );
+      const response = await api.post("/api/suggest-sport", {
+        height: formData.height,
+        weight: formData.weight,
+        hobbies: formData.hobbies,
+        goals: formData.goals,
+      });
 
-      const aiText = response.data;
-      const jsonMatch = aiText.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]);
-        setSports(parsed.sports || []);
-      } else {
-        console.warn("No JSON found in AI response");
+      // ✅ Correctly read backend response
+      const aiText = response.data.data;
+
+      if (typeof aiText !== "string") {
+        console.error("Invalid AI response:", aiText);
+        return;
       }
-    } catch (err) {
-      console.error("Error fetching sports:", err);
-    }
 
-    setLoading(false);
+      // ✅ Safely extract JSON
+      const jsonMatch = aiText.match(/\{[\s\S]*\}/);
+
+      if (!jsonMatch) {
+        console.warn("No JSON found in AI response");
+        return;
+      }
+
+      const parsed = JSON.parse(jsonMatch[0]);
+
+      setSports(Array.isArray(parsed.sports) ? parsed.sports : []);
+    } catch (err) {
+      console.error("Error fetching sports:", err?.response?.data || err);
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <>
-          <h1 className="lg:text-4xl text-2xl text-center my-10 font-bold text-slate-900"> AI Sports Advisor</h1>
+      <h1 className="lg:text-4xl text-2xl text-center my-10 font-bold text-slate-900"> AI Sports Advisor</h1>
       <div className="flex lg:h-100 h-auto lg:bg-white rounded-lg bg-zinc-100 lg:p-0 p-5 overflow-hidden lg:m-20 m-10 ">
 
         <form
@@ -89,8 +103,8 @@ const SportForm = () => {
 
               {/* Card Title */}
               <div className="flex items-center justify-center lg:justify-start gap-2 mb-5">
-                  <p className="lg:text-4xl text-xl text-center font-bold text-slate-900">
-                  AI Sports Advisor
+                <p className="lg:text-4xl flex text-xl text-center items-end font-bold text-slate-900">
+                  AI Sports Advisor <p className="text-gray-400 text-xs test-start ">(in kg, in cm)</p>
                 </p>
               </div>
 
