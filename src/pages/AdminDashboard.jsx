@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 
 export default function AdminDashboard() {
   const [tournaments, setTournaments] = useState([]);
   const [totalEnrollments, setTotalEnrollments] = useState(0);
+  const [count, setCount] = useState(0);
   const navigate = useNavigate();
-
-  const tokenempty = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      localStorage.removeItem("token");
-      navigate("/");
-    }
-  }
+ 
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -28,16 +22,14 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await api.get("/tournament/all");
-        setTournaments(res.data);
+        const res = await api.get("/api/tour/my-tournaments");
+        setTournaments(res.data.data);
+        setCount(res.data)
+        
 
         // Count total enrollments across all tournaments
-        const enrollCount = res.data.reduce(
-          (sum, t) => sum + (t.enrolledCount || 0),
-          0
-        );
-
-        setTotalEnrollments(enrollCount);
+       
+        
       } catch (err) {
         console.log(err);
       }
@@ -75,7 +67,7 @@ export default function AdminDashboard() {
         <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
           <h2 className="text-gray-600 text-sm font-medium">Total Tournaments</h2>
           <p className="text-4xl font-semibold text-blue-600 mt-3">
-            {tournaments.length}
+            {count.count}
           </p>
         </div>
 
@@ -83,17 +75,17 @@ export default function AdminDashboard() {
         <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
           <h2 className="text-gray-600 text-sm font-medium">Total Enrollments</h2>
           <p className="text-4xl font-semibold text-green-600 mt-3">
-            {totalEnrollments}
+            {totalEnrollments.data?.enrolled || 0}
           </p>
         </div>
 
         {/* Upcoming Events */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
+        {/* <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center">
           <h2 className="text-gray-600 text-sm font-medium">Upcoming Events</h2>
           <p className="text-4xl font-semibold text-purple-600 mt-3">
             {tournaments.filter((t) => new Date(t.date) > new Date()).length}
           </p>
-        </div>
+        </div> */}
       </div>
 
       {/* Actions */}
@@ -122,7 +114,7 @@ export default function AdminDashboard() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {tournaments.slice(0, 4).map((t) => (
+          {tournaments.map((t) => (
             <div
               key={t._id}
               className="bg-white border border-gray-200 rounded-2xl p-6 
@@ -142,7 +134,7 @@ export default function AdminDashboard() {
 
                 <p>
                   <span className="font-medium">Enrolled:</span>{" "}
-                  {t.enrolledCount || 0}
+                  {t.enrolled || 0}
                 </p>
               </div>
 

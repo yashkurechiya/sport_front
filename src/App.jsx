@@ -21,6 +21,7 @@ import Common from './games/Common';
 import AsianGames from './games/AsianGames';
 import {ToastContainer} from 'react-toastify'
 import Coach from './pages/Coach';
+import ME from './pages/Me';
 
 const App = () => {
   return (
@@ -43,6 +44,11 @@ const App = () => {
         <Route path='/story' element={< Stories />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/me' element={
+          <ProtectedRoute role="me">
+            <ME />
+          </ProtectedRoute>
+        } />
 
         <Route path='/admin/create-tournament'
           element={

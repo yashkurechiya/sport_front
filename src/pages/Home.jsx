@@ -1,6 +1,5 @@
 import React from 'react'
 import Hero from '../components/Hero'
-import Inter from '../games/Inter'
 import Scroll from '../games/Scroll'
 import Achievement from '../games/Achievement'
 import Chart from '../games/Chart'
@@ -12,6 +11,7 @@ import EligibilityHome from '../games/EligibilityHome'
 import Story from '../games/Story'
 import GetDetail from '../games/GetDetail'
 import NewsSection from '../games/NewsSection'
+import InterCart from '../components/InterCart'
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
       <div className=' lg:mt-20 mt-18'>
         <Hero />
       </div>
-      <Inter />
+    <InterCart />
       <div className='my-1 lg:my-10'>
         <ScrollHori />
       </div>

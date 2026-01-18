@@ -68,7 +68,7 @@ const Navbar = () => {
      ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
               }
             >
-              Sport
+             Explore Sport
             </NavLink>
 
             <NavLink
@@ -78,7 +78,7 @@ const Navbar = () => {
      ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
               }
             >
-              Tournament
+              Tournaments
             </NavLink>
 
             <NavLink
@@ -91,16 +91,13 @@ const Navbar = () => {
               Coach
             </NavLink>
 
-            <NavLink
-              to="/story"
-              className={({ isActive }) =>
-                `relative px-2 py-1 transition 
-     ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
-              }
-            >
-              Stories
-            </NavLink>
- 
+             
+                  {user?.role === "me" && (
+                    <NavLink to="/me" className={({ isActive }) => `relative px-2 py-1 transition ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`}>
+                    <li>Me</li>
+                    </NavLink>
+                  )}
+
                   {user?.role === "admin" && (
                     <NavLink to="/admin" className={({ isActive }) => `relative px-2 py-1 transition ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`}>
                     <li>Admin</li>
@@ -139,9 +136,7 @@ const Navbar = () => {
               <Link to="/academy" onClick={() => setMenuOpen(false)}>
                 <span className="text-xl hover:text-blue-500">Academy</span>
               </Link>
-              <Link to="/story" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-blue-500">Stories</span>
-              </Link>
+              
 
               {/* ADMIN ONLY */}
               {user?.role === "admin" && (

@@ -104,3 +104,9 @@ body{
 .animate-marquee2 {
   animation: marquee2 18s linear infinite;
 }
+
+
+/* Hide scrollbar but allow scroll */
+::-webkit-scrollbar {
+  display: none;
+}
