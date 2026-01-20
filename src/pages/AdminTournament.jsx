@@ -25,7 +25,7 @@ export default function AdminCreateTournament() {
             <p className="text-gray-600">Location: {t.location}</p>
             <p className="text-blue-600">Enrolled: {t.enrolled}</p>
 
-          <Link to={`/admin/tournament/${t._id}/participants`}>
+          <Link to={`/admin/tournaments/${t._id}/participants`}>
             <button className="mt-3 bg-blue-500 text-white px-4 py-2 rounded">
               View Enrollments
             </button>

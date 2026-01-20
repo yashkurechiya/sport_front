@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api from "../api/axios.js";
 import Loader from "./Loader.jsx";
 import { toast } from "react-toastify";
@@ -18,11 +18,21 @@ export default function ViewTour() {
     }
   };
 
+ const user = JSON.parse(localStorage.getItem("user"));
+const role = user?.role;
+
+ 
 
   // Enroll user
   const handleEnroll = async () => {
     try {
       const token = localStorage.getItem("token");
+
+      if(role !== 'user'){
+        toast.error("Only users can enroll in tournaments");
+        return;
+      }
+
       if (!token) {
         toast.error("Please log in to enroll");
         // alert("Please log in to enroll");
@@ -60,6 +70,8 @@ export default function ViewTour() {
     }
   };
 
+
+
   const verifyPayment = async (paymentData) => {
     try {
       const token = localStorage.getItem("token");
@@ -87,12 +99,7 @@ export default function ViewTour() {
       toast.error(message);
     }
   };
-  const isExpired = tournament
-    ? new Date(tournament.registrationDeadline) < new Date()
-    : false;
-
-
-
+  const isExpired = tournament?.computedState === "Started";
 
   useEffect(() => {
     fetchTournament();
@@ -151,6 +158,11 @@ export default function ViewTour() {
 
         {/* Grid Details */}
         <div className="grid sm:grid-cols-2 gap-6 pt-3">
+          <Detail
+            label="Registration Opens"
+            value={tournament.registrationStartDate?.split("T")[0] || "N/A"}
+          />
+
           <Detail label="Date" value={tournament.date?.split("T")[0]} />
           <Detail label="Registration Deadline" value={tournament.registrationDeadline?.split("T")[0] || "N/A"} />
 
@@ -199,21 +211,37 @@ export default function ViewTour() {
           </div>
         </div>
 
+        <div>
+          <Link to={`/chat/${tournament._id}`}>
+            <button className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg cursor-pointer">
+              
+            Group Chat
+            </button>
+
+          </Link>
+        </div>
+
       </div>
 
       {/* CTA Button */}
       <button
         onClick={handleEnroll}
-        disabled={isExpired}
+        disabled={!isExpired}
         className={`
     w-full mt-12 py-3 text-white text-lg rounded-xl font-medium transition
     ${isExpired
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-black hover:bg-gray-900 cursor-pointer"}
+            ? "bg-black hover:bg-gray-900 cursor-pointer"
+            : "bg-gray-400 cursor-not-allowed"
+          }
   `}
       >
-        {isExpired ? "Registration Closed" : "Enroll Now"}
+        {tournament.computedState === "Started"
+          ? "Enroll Now"
+          : tournament.computedState === "Upcoming"
+            ? "Registration Not Started"
+            : "Registration Closed"}
       </button>
+
 
     </div>
 

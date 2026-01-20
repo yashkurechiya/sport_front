@@ -30,5 +30,5 @@ import Loader from "./Loader.jsx";
   const sport = sportD.find((item) => item.id === id);
 
   if (!sport) return <h1 className="text-center mt-40 text-2xl"><Loader /></h1>;
-  return sport ? <SportsPage data={sport} /> : <Loader />;
+  return sport ? React.lazy(() => <SportsPage data={sport} />) : <Loader />;
 }

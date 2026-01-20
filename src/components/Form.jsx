@@ -62,7 +62,6 @@ const SportForm = () => {
 
   return (
     <>
-      <h1 className="lg:text-4xl text-2xl text-center my-10 font-bold text-slate-900"> AI Sports Advisor</h1>
       <div className="flex lg:h-100 h-auto lg:bg-white rounded-lg bg-zinc-100 lg:p-0 p-5 overflow-hidden lg:m-20 m-10 ">
 
         <form

@@ -11,6 +11,7 @@ export default function AdminCreateTournament() {
         description: "",
         date: "",
         registrationDeadline: "",
+        registrationStartDate: "",
         location: "",
         venue: "",
         image: "",
@@ -115,6 +116,16 @@ export default function AdminCreateTournament() {
                             className="mt-1 w-full p-3 border border-gray-300 rounded-xl 
           focus:outline-none focus:ring-2 focus:ring-black transition"
                         />
+                    </div>
+                    <div>
+                        <label className="text-sm text-gray-500">Registration Start Date</label>
+                        <input
+                            type="date"
+                            name="registrationStartDate"
+                            onChange={handleChange}
+                            className="w-full border rounded-lg px-3 py-2"
+                        />
+
                     </div>
 
                     <div>

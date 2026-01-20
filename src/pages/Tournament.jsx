@@ -8,7 +8,7 @@ const Tournament = () => {
 
     const [level, setLevel] = useState("All levels");
 
-    const levels = ["All levels", "Internationals", "Nationals", "Locals"];
+    const levels = ["All levels", "International", "National", "Local"];
     const handleLevel = (e) => {
         setLevel(e.target.value);
         console.log(e.target.value);
@@ -119,7 +119,6 @@ const Tournament = () => {
                     {/*<TournamentCard title={tournaments[0].name} logo={tournaments[0].logo} status={tournaments[0].status} date={tournaments[0].date} description={tournaments[0].description} location={tournaments[0].location} enrolled={tournaments[0].enrolled} state={tournaments[0].state} />*/}
                 </div>
             </div>
-            <GameFooter />
         </>
 
     )

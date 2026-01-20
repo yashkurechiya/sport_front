@@ -60,6 +60,7 @@ const Navbar = () => {
               Home
               
             </NavLink>
+           
 
             <NavLink
               to="/sport"
@@ -81,15 +82,7 @@ const Navbar = () => {
               Tournaments
             </NavLink>
 
-            <NavLink
-              to="/coach"
-              className={({ isActive }) =>
-                `relative px-2 py-1 transition 
-     ${isActive ? "text-blue-700 font-semibold" : "text-gray-700 hover:text-blue-500"}`
-              }
-            >
-              Coach
-            </NavLink>
+            
 
              
                   {user?.role === "me" && (
@@ -128,14 +121,12 @@ const Navbar = () => {
                 <span className="text-xl hover:text-blue-500">Home</span>
               </Link>
               <Link to="/sport" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-blue-500">Sport</span>
+                <span className="text-xl hover:text-blue-500">Explore Sport</span>
               </Link>
               <Link to="/tournament" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-blue-500">Tournament</span>
+                <span className="text-xl hover:text-blue-500">Tournaments</span>
               </Link>
-              <Link to="/academy" onClick={() => setMenuOpen(false)}>
-                <span className="text-xl hover:text-blue-500">Academy</span>
-              </Link>
+            
               
 
               {/* ADMIN ONLY */}

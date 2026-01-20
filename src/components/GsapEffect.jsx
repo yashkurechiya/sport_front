@@ -130,7 +130,7 @@ const TennisTimeline = () => {
 
 
   return (
-    <div className="w-full bg-white   lg:py-20 py-10">
+    <div className="w-full bg-white ">
       {/* Heading */}
       <h2 className="text-3xl lg:text-4xl font-extrabold text-center mb-16 text-gray-900 tracking-tight">
         Indian Champions

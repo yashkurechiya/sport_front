@@ -4,69 +4,81 @@ import logo from '../assets/logosport.png'
 
 export default function GameFooter() {
   return (
-    <footer className="relative bg-white text-gray-600 py-12 px-6 mt-16">
-      {/* Neon Border Effect */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 animate-pulse"></div>
-      
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 z-10 relative">
-        
-        {/* About */}
-        <div>
-           <img src={logo} alt=""  className="lg:h-20 h-10"/>
-          <p className="mt-4 text-gray-600 text-sm">
-            Enter the ultimate gaming hub 🌌. Explore tournaments, track your stats, 
-            and level up your journey with our community.
-          </p>
-        </div>
+   <footer className="w-full bg-zinc-50 border-t border-slate-200">
+  <div className="max-w-7xl mx-auto px-6 py-10 grid gap-12 sm:grid-cols-2 md:grid-cols-4">
+    
+    {/* Brand / About */}
+    <div>
+      <img src={logo} alt="GoIndia Logo" className="h-10 mb-4" />
+      <p className="text-sm text-slate-600 leading-relaxed">
+        GoIndia is a unified sports platform to explore tournaments,
+        connect with athletes, and track your competitive journey
+        across local and international events.
+      </p>
+    </div>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-blue-800">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            {["Home", "Sport", "Tournament", "Academy", "Stories", "About"].map((link, i) => (
-              <motion.li 
-                key={i}
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 100 }}
-              >
-                <a href={`/${link.toLowerCase()}`} className="hover:text-purple-400 transition-colors">
-                  {link}
-                </a>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
+    {/* Quick Links */}
+    <div>
+      <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+        Quick Links
+      </h3>
+      <ul className="space-y-3 text-sm">
+        {["Home", "Sport", "Tournaments", "Stories", "About"].map((link, i) => (
+          <li key={i}>
+            <a
+              href={`/${link.toLowerCase()}`}
+              className="text-slate-600 hover:text-blue-600 transition-colors"
+            >
+              {link}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-        {/* Contact */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-purple-400">Contact</h3>
-          <p className="text-sm">📧 support@indianolympics.com</p>
-          <p className="text-sm">📍 New Delhi, India</p>
-        </div>
-
-        {/* Social */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-purple-400">Connect</h3>
-          <div className="flex space-x-5">
-            {[FaTwitter, FaDiscord, FaYoutube, FaInstagram].map((Icon, i) => (
-              <motion.a
-                key={i}
-                href="#"
-                whileHover={{ scale: 1.2, rotate: 0 }}
-                transition={{ type: "spring", stiffness: 200 }}
-                className="p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-cyan-400 hover:text-white shadow-lg shadow-cyan-500/20"
-              >
-                <Icon size={20} />
-              </motion.a>
-            ))}
-          </div>
-        </div>
+    {/* Contact */}
+    <div>
+      <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+        Contact
+      </h3>
+      <div className="space-y-2 text-sm text-slate-600">
+        <p>Email: <span className="text-slate-800">2005yashkurechiya@gmail.com</span></p>
+        <p>Location: <span className="text-slate-800">Indore, India</span></p>
       </div>
+    </div>
 
-      {/* Bottom Line */}
-      <div className="mt-12 text-center text-sm text-gray-500 border-t border-gray-800 pt-6">
-        © {new Date().getFullYear()} GoIndia. All Rights Reserved. ⚡
+    {/* Social */}
+    <div>
+      <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wide mb-4">
+        Follow Us
+      </h3>
+      <div className="flex gap-4">
+        {[FaTwitter, FaDiscord, FaYoutube, FaInstagram].map((Icon, i) => (
+          <a
+            key={i}
+            href="#"
+            className="p-2 rounded-md border border-slate-200
+                       text-slate-600 hover:text-blue-600
+                       hover:border-blue-600 transition"
+          >
+            <Icon size={18} />
+          </a>
+        ))}
       </div>
-    </footer>
+    </div>
+  </div>
+
+  {/* Bottom Bar */}
+  <div className="bg-zinc-100 border-t border-slate-200">
+    <div className="max-w-7xl mx-auto px-6 py-4 text-center text-sm text-slate-600">
+      © {new Date().getFullYear()} <span className="font-medium text-slate-800">GoIndia</span>.
+      All rights reserved. <br className="sm:hidden" />
+      <span className="sm:ml-2">
+        Developed by <span className="font-medium text-slate-800">Yash Kurechiya</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
   );
 }

@@ -19,24 +19,25 @@ import TourParticipants from './pages/TourParticipants';
 import Olympics from './games/Olympics';
 import Common from './games/Common';
 import AsianGames from './games/AsianGames';
-import {ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import Coach from './pages/Coach';
 import ME from './pages/Me';
+import TournamentChat from './components/TournamentChat';
+import GameFooter from './components/Footer';
 
 const App = () => {
   return (
     <div>
-        <ToastContainer />
+      <ToastContainer />
       <Navbar />
-
       <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/sport' element={<Sport />} />
         <Route path='/olympics' element={<Olympics />} />
-        <Route path='/commonwg' element={<Common />}/>
-        <Route path='/asian' element={<AsianGames />}/>
+        <Route path='/commonwg' element={<Common />} />
+        <Route path='/asian' element={<AsianGames />} />
         <Route path='/tournament' element={<Tournament />} />
         {/* <Route path='/sport/tennis' element={<Eligibility />}/> */}
         <Route path='/sport/:id' element={<SportsPageWrapper />} />
@@ -62,11 +63,16 @@ const App = () => {
             <AdminTournaments />
           </ProtectedRoute>
         } />
-        <Route path='/:id/participants' element={
-          <ProtectedRoute role={["admin"]}>
-            <TourParticipants />
-          </ProtectedRoute>
-        } />
+
+        <Route
+          path="/admin/tournaments/:id/participants"
+          element={
+            <ProtectedRoute role="admin">
+              <TourParticipants />
+            </ProtectedRoute>
+          }
+        />
+
 
         <Route path='/tournament/:id' element={<ViewTour />} />
 
@@ -75,14 +81,10 @@ const App = () => {
             <AdminDashboard />
           </ProtectedRoute>
         } />
-        <Route
-          path="/admin/tournament/:id/participants"
-          element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <TourParticipants />
-            </ProtectedRoute>
-          }
-        />
+
+        <Route path='/chat/:tournamentId' element={<TournamentChat />} />
+
+
 
 
         <Route
@@ -92,7 +94,9 @@ const App = () => {
               <UserProfile />
             </ProtectedRoute>
           } />
+
       </Routes>
+          <GameFooter />
 
     </div>
   );

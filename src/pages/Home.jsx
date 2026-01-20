@@ -34,7 +34,7 @@ const Home = () => {
       <Story limit={8} showbutton={true} />
       <Form />
       <NewsSection />
-      <GameFooter />
+      {/* <GameFooter /> */}
 
 
     </div>

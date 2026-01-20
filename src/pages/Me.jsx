@@ -20,11 +20,22 @@ const ME = () => {
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
+
+                // const token = localStorage.removeItem("token");
+                
+                const token = localStorage.getItem("token");
+                if (!token) {
+                    navigate('/login');
+                    return;
+                }
+                
                 const res = await api.get(
                     "/api/users/me");
 
                 setUsers(res.data.users);
                 setTournaments(res.data.tournaments);
+              
+                
             } catch (err) {
                 console.error(err);
                 setError("Failed to load dashboard data");
@@ -45,7 +56,7 @@ const ME = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 px-4 py-6 lg:px-10">
+        <div className="min-h-screen mt-20 bg-gray-50 px-4 py-6 lg:px-10">
 
             {/* 🔝 Top Header */}
             <div className="flex items-center justify-between mb-8">

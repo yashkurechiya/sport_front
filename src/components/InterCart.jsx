@@ -18,10 +18,10 @@ const InterCart = () => {
         scrollbar-hide
       "
     >
-      {/* Olympics */}
-      <Link to="/olympics" className="shrink-0">
+      
         <div className="relative cursor-pointer h-40 sm:h-44 lg:h-56 w-64 lg:w-80 overflow-hidden rounded-lg group">
           <img
+          loading="lazy"
             src="https://cdn.britannica.com/55/235355-050-2CE9732E/Usain-Bolt-Jamaica-gold-medal-breaking-world-record-200m-Beijing-Summer-Olympics-August-20-2008.jpg"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
             alt="Olympics"
@@ -31,10 +31,10 @@ const InterCart = () => {
             Olympics
           </h1>
         </div>
-      </Link>
+       
 
       {/* Commonwealth */}
-      <Link to="/commonwg" className="shrink-0">
+    
         <div className="relative cursor-pointer h-40 sm:h-44 lg:h-56 w-64 lg:w-80 overflow-hidden rounded-lg group">
           <img
             src="https://cdn.mos.cms.futurecdn.net/epJpgLY2h2TnuT8WoS5ZZN-1280-80.jpg.webp"
@@ -46,10 +46,10 @@ const InterCart = () => {
             Commonwealth <br /> Games
           </h1>
         </div>
-      </Link>
+  
 
       {/* Asian Games */}
-      <Link to="/asian" className="shrink-0">
+      
         <div className="relative cursor-pointer h-40 sm:h-44 lg:h-56 w-64 lg:w-80 overflow-hidden rounded-lg group">
           <img
             src="https://indianexpress.com/wp-content/uploads/2018/08/asian-games-pv-sindhu-759.jpg"
@@ -61,7 +61,7 @@ const InterCart = () => {
             Asian Games
           </h1>
         </div>
-      </Link>
+   
     </div>
   );
 };

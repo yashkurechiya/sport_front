@@ -45,7 +45,7 @@ export default function AdminDashboard() {
   }, [tokeN, navigate]);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-6 pt-28 pb-20">
+    <div className="min-h-screen bg-gray-50 px-6 pt-28 py-10 ">
 
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -140,7 +140,7 @@ export default function AdminDashboard() {
 
               <button
                 onClick={() =>
-                  navigate(`/admin/tournaments/${t._id}/enrollments`)
+                  navigate(`/admin/tournaments/${t._id}/participants`)
                 }
                 className="w-full mt-5 py-2.5 bg-blue-600 hover:bg-blue-700 
                        text-white rounded-xl font-medium transition"
@@ -158,8 +158,5 @@ export default function AdminDashboard() {
         </div>
       </div>
     </div>
-
-
-
   );
 }
