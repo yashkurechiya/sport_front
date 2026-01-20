@@ -20,7 +20,7 @@ const InterCart = () => {
   ];
 
   return (
-    <div className="mt-6 m-2">
+    <div className="mt-6 m-2 justify-center">
     
       
 

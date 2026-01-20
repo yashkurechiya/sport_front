@@ -19,7 +19,10 @@ const Home = () => {
       <div className=' lg:mt-20 mt-18'>
         <Hero />
       </div>
+      <div className='w-full justify-center lg:flex '>
+
     <InterCart />
+      </div>
       <div className='my-1 lg:my-10'>
         <ScrollHori />
       </div>
