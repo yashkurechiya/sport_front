@@ -4,7 +4,6 @@ import Scroll from '../games/Scroll'
 import Achievement from '../games/Achievement'
 import Chart from '../games/Chart'
 // import HoriScroll from '../components/HoriScroll'
-import GameFooter from '../components/Footer'
 import ScrollHori from '../components/ScrollHori'
 import Form from '../components/Form'
 import EligibilityHome from '../games/EligibilityHome'
@@ -12,6 +11,7 @@ import Story from '../games/Story'
 import GetDetail from '../games/GetDetail'
 import NewsSection from '../games/NewsSection'
 import InterCart from '../components/InterCart'
+import GameFooter from '../components/Footer'
 
 const Home = () => {
   return (
@@ -37,7 +37,7 @@ const Home = () => {
       <Story limit={8} showbutton={true} />
       <Form />
       <NewsSection />
-      {/* <GameFooter /> */}
+      <GameFooter />
 
 
     </div>

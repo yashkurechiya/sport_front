@@ -96,7 +96,6 @@ const App = () => {
           } />
 
       </Routes>
-          <GameFooter />
 
     </div>
   );

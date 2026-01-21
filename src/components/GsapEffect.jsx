@@ -130,14 +130,14 @@ const TennisTimeline = () => {
 
 
   return (
-    <div className="w-full bg-white ">
+    <div className="w-full h-auto bg-white ">
       {/* Heading */}
       <h2 className="text-3xl lg:text-4xl font-extrabold text-center mb-16 text-gray-900 tracking-tight">
         Indian Champions
       </h2>
 
       {data.length > 0 ? (
-        <div className="flex flex-col gap-20 max-w-6xl mx-auto px-6">
+        <div className="flex flex-col h-auto gap-20 max-w-6xl mx-auto px-6">
 
           {sportD.map((item, index) => (
             <motion.div
@@ -185,9 +185,7 @@ const TennisTimeline = () => {
         </div>
       )}
 
-      <div className="mt-20">
-        <GameFooter />
-      </div>
+      
     </div>
 
 

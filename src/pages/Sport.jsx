@@ -30,8 +30,8 @@ const Sport = () => {
   ]
   return (
     < >
-      <img src={photo} loading='lazy' alt="" className='h-100 bottom-0 object-cover w-full mt-0' />
-      <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent h-100'></div>
+      <img src={photo} loading='lazy' alt="" className='lg:h-100 h-70 bottom-0 object-cover w-full mt-0' />
+      <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent lg:h-100 h-70'></div>
       <div className='absolute z-10 lg:top-40 top-30 w-full px-10 items-center'>
         <div className='items-center justify-center w-full '>
           <h1 className='lg:text-5xl text-3xl md:text-5xl text-white  font-semibold text-center lg:my-10 my-5 md:my-20 '> Explore Sport</h1>
@@ -41,6 +41,7 @@ const Sport = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Played />
       </Suspense>
+      <GameFooter />
     </>
   )
 }
