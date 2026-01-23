@@ -24,6 +24,7 @@ import Coach from './pages/Coach';
 import ME from './pages/Me';
 import TournamentChat from './components/TournamentChat';
 import GameFooter from './components/Footer';
+import About from './pages/About';
 
 const App = () => {
   return (
@@ -94,7 +95,7 @@ const App = () => {
               <UserProfile />
             </ProtectedRoute>
           } />
-
+        <Route path='/about' element={<About />} />
       </Routes>
 
     </div>
