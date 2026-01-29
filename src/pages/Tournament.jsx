@@ -78,7 +78,7 @@ const Tournament = () => {
                             />
 
                             {/* Select Box */}
-                            <select
+                            {/* <select
                                 value={level}
                                 onChange={handleLevel}
                                 className="
@@ -98,7 +98,7 @@ const Tournament = () => {
                                         {lvl}
                                     </option>
                                 ))}
-                            </select>
+                            </select> */}
 
                         </div>
 
