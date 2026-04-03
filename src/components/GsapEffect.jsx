@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GameFooter from "./Footer";
 import { useState } from "react";
-import axios from "axios";
+import api from '../api/axios';
 import {motion} from 'framer-motion'
 import { data, useParams } from "react-router-dom";
 import Loader from "./Loader";
@@ -57,13 +57,11 @@ const TennisTimeline = () => {
   const containerRef = useRef([]);
   const { id } = useParams();
   const [sportD, setSportD] = useState([]);
-  const backend = import.meta.env.VITE_BACKEND_URL ?? '';
-  const base = backend.replace(/\/$/, ''); // remove trailing slash if present
 
   const handleData = async () => {
     try {
       console.log(id);
-      const response = await axios.get(`${base}/api/sportget`, {});
+      const response = await api.get('/api/sportget');
       const data = response.data.find((sport) => sport.id === id);
       setSportD(data?.gsaptime || []);
     } catch (error) {

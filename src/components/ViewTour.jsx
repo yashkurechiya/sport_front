@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 export default function ViewTour() {
   const { id } = useParams();
   const [tournament, setTournament] = useState(null);
+  const [isIn, setIsIn] = useState(false);
+
 
   // Fetch tournament by ID
   const fetchTournament = async () => {
@@ -20,6 +22,19 @@ export default function ViewTour() {
 
  const user = JSON.parse(localStorage.getItem("user"));
 const role = user?.role;
+
+const handleLogin = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    if(token){
+      setIsIn(true);
+      return;
+    }
+  }  catch (error) {
+    console.error("Login Error:", error);
+    toast.error("Please log in to chat");
+  }
+}
 
  
 
@@ -103,6 +118,7 @@ const role = user?.role;
 
   useEffect(() => {
     fetchTournament();
+    handleLogin();
   }, []);
 
   if (!tournament)
@@ -213,7 +229,7 @@ const role = user?.role;
 
         <div>
           <Link to={`/chat/${tournament._id}`}>
-            <button className="p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg cursor-pointer">
+            <button  disabled={!isIn} className={`p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg   ${!isIn ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}>
               
             Group Chat
             </button>

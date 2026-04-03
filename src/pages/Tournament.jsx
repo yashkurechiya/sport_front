@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 import TournamentCard from '../components/TournamentCard';
 import GameFooter from '../components/Footer';
-import axios from 'axios';
+import api from '../api/axios';
 import Loader from '../components/Loader';
 
 const Tournament = () => {
@@ -17,14 +17,11 @@ const Tournament = () => {
         console.log(e.target.value);
     }
     const [tournaData, setTournaData] = useState([]);
-    const backend = import.meta.env.VITE_BACKEND_URL ?? '';
-    const base = backend.replace(/\/$/, ''); // remove trailing slash if present
-    console.log(base);
 
     const handleData = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`${base}/api/tour/getTournament`, {});
+            const response = await api.get('/api/tour/getTournament');
             setTournaData(response.data.data)
             console.log(response.data.data);
             console.log("from response");

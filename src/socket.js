@@ -1,9 +1,7 @@
 import { io } from "socket.io-client";
 
 const BACKEND_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "https://sport-back-nwk2.onrender.com";
+  import.meta.env.VITE_BACKEND_URL || `${window.location.protocol}//${window.location.hostname}:5000`;
 
 const socket = io(BACKEND_URL, {
   transports: ["websocket"],

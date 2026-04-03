@@ -1,7 +1,7 @@
 import React from 'react'
 import StoryCard from '../components/StoryCard'
 import { useEffect } from 'react';
-import axios from 'axios'
+import api from '../api/axios'
 import { useState } from 'react';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
@@ -10,13 +10,11 @@ const Story = ({ limit, showbutton }) => {
 
 
   const [storyData, setStoryData] = useState([]);
-  const backend = import.meta.env.VITE_BACKEND_URL ?? '';
-  const base = backend.replace(/\/$/, ''); // remove trailing slash if present
 
 
   const handleData = async () => {
     try {
-      const response = await axios.get(`${base}/admin/v1/getstory`, {});
+      const response = await api.get('/admin/v1/getstory');
       setStoryData(response.data)
     } catch (error) {
       console.log(error.message);

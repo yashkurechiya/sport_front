@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import sportsData from '../assets/data/fullData.js'
 import SportsPage from '../pages/SportsPage.jsx'
 import { useState } from "react";
-import axios from "axios";
+import api from '../api/axios';
 import { useEffect } from "react";
 import Loader from "./Loader.jsx";
 
@@ -10,12 +10,9 @@ import Loader from "./Loader.jsx";
 
     const [sportD, setSportD] = useState([]);
 
-       const backend = import.meta.env.VITE_BACKEND_URL ?? '';
-    const base = backend.replace(/\/$/, ''); // remove trailing slash if present
-
     const handleData = async () =>{
         try {
-            const response = await axios.get(`${base}/api/sportget`, {});
+            const response = await api.get('/api/sportget');
             setSportD(response.data);
         } catch (error) {
             console.log(error);
@@ -24,7 +21,7 @@ import Loader from "./Loader.jsx";
 
     useEffect(()=>{
         handleData()
-    });
+    }, []);
 
   const { id } = useParams();
   const sport = sportD.find((item) => item.id === id);

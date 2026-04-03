@@ -1,10 +1,11 @@
 import axios from "axios";
 
+const resolvedBackendUrl = import.meta.env.VITE_BACKEND_URL || `${window.location.protocol}//${window.location.hostname}:5000`;
+
 const api = axios.create({
-  baseURL:  import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:5000'
+  baseURL: resolvedBackendUrl
 });
 
-// Attach token automatically
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
